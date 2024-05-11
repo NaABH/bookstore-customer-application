@@ -3,9 +3,10 @@ using Microsoft.EntityFrameworkCore;
 using BookStore.Models;
 
 var builder = WebApplication.CreateBuilder(args);
+var connectionString = builder.Configuration.GetConnectionString("Customers") ?? "Data Source=Customers.db";
 
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddDbContext<CustomerDb>(options => options.UseInMemoryDatabase("items"));
+builder.Services.AddSqlite<CustomerDb>(connectionString);
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "BookStore API", Description = "Enjoy Reading Your Books", Version = "v1" });
