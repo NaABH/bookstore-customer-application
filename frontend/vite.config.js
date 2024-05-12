@@ -8,9 +8,7 @@ export default defineConfig({
     port: 3000,
     proxy: {
       '/customer': {
-        // target: 'http://localhost:5100', // Mock server port
-        target: 'http://localhost:5208', // Mock server port
-        // target: 'https://tl9zbhdg-5208.asse.devtunnels.ms', // API server port
+        target: 'http://localhost:5208', // API server port
         changeOrigin: true,
         secure: false,
         ws: true,

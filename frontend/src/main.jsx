@@ -7,6 +7,7 @@ const theme = createTheme();
 
 import Customer from './Customer'
 
+// Entry point for the app
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
