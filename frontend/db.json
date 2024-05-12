@@ -1,0 +1,22 @@
+{
+  "customers": [
+    {
+      "id": "1",
+      "firstName": "Margherita",
+      "lastName": "mozzarella, and basil",
+      "email": ""
+    },
+    {
+      "id": "2",
+      "firstName": "Pepperoni",
+      "lastName": "Tomato sauce, mozzarella, and pepperoni",
+      "email": ""
+    },
+    {
+      "id": "3",
+      "firstName": "Hawaiian",
+      "lastName": "Tomato sauce, mozzarella, ham, and pineapple",
+      "email": ""
+    }
+  ]
+}

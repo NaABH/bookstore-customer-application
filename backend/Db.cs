@@ -4,10 +4,10 @@ namespace BookStore.Models;
 
  public record Customer
 {
-    public int Id { get; set; }
-    public string? FirstName { get; set; }
-    public string? LastName { get; set; }
-    public string? Email { get; set; }
+    public int id { get; set; }
+    public string? firstName { get; set; }
+    public string? lastName { get; set; }
+    public string? email { get; set; }
 }
 
 public class CustomerDb: DbContext
