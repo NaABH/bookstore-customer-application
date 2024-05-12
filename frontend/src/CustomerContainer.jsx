@@ -4,7 +4,7 @@ import CustomerForm from './CustomerForm';
 import CustomerList from './CustomerList';
 
 // CustomerContainer component (container for CustomerForm and CustomerList)
-function CustomerContainer({ name, data, error, onCreate, onUpdate, onDelete }) {
+function CustomerContainer({ name, data, onCreate, onUpdate, onDelete }) {
     const [formData, setFormData] = useState({ firstName: '', lastName: '', email: '' });
     const [formErrors, setFormErrors] = useState({});
     const [editingId, setEditingId] = useState(null);
@@ -136,7 +136,6 @@ function CustomerContainer({ name, data, error, onCreate, onUpdate, onDelete }) 
                 handleEdit={handleEdit}
                 handleDelete={handleDelete}
             />
-            {error && <p>{error.message}</p>}
         </Box>
     );
 }

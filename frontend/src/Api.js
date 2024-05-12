@@ -15,7 +15,15 @@ export const createCustomer = (item) => {
         headers,
         body: JSON.stringify({ firstName: item.firstName, lastName: item.lastName, email: item.email }),
     })
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                if (response.status === 409) {
+                    throw new Error('A customer with the same email already exists.');
+                }
+                throw new Error('An error occurred.');
+            }
+            return response.json();
+        })
         .catch(error => { throw error });
 };
 

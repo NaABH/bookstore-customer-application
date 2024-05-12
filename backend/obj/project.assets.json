@@ -2957,11 +2957,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\nanhw\\source\\repos\\BookStore\\BookStore.csproj",
+      "projectUniqueName": "C:\\Users\\nanhw\\source\\repos\\BookStore\\backend\\BookStore.csproj",
       "projectName": "BookStore",
-      "projectPath": "C:\\Users\\nanhw\\source\\repos\\BookStore\\BookStore.csproj",
+      "projectPath": "C:\\Users\\nanhw\\source\\repos\\BookStore\\backend\\BookStore.csproj",
       "packagesPath": "C:\\Users\\nanhw\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\nanhw\\source\\repos\\BookStore\\obj\\",
+      "outputPath": "C:\\Users\\nanhw\\source\\repos\\BookStore\\backend\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\nanhw\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "DMPzywMoVd4r6V8D67xI9o5bgIJMj2x7V0nEMKEFDvy2fuPr3u9DKj88SXiZYIy904HJeeG1BI05XPI24YoY1A==",
+  "dgSpecHash": "7yqkLJI0tfr5IuvfGfRc3MiW/CmxfM3VmjYdYAXr2eC9wN1WA9CYwtalgVkXvMG75QP1dTAvk3wCBPZ1mkH7UQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\nanhw\\source\\repos\\BookStore\\BookStore.csproj",
+  "projectFilePath": "C:\\Users\\nanhw\\source\\repos\\BookStore\\backend\\BookStore.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\nanhw\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\nanhw\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\6.0.0\\microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",

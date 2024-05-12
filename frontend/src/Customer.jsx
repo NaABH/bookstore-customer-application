@@ -11,9 +11,9 @@ const headers = {
 
 function Customer() {
     const [data, setData] = useState([]);
-    const [error, setError] = useState(null);
     const [open, setOpen] = useState(false);
     const [message, setMessage] = useState('');
+    const [severity, setSeverity] = useState('success');
 
     useEffect(() => {
         document.title = "Bookstore Customer Record";
@@ -27,7 +27,9 @@ function Customer() {
             console.log('Rendering component with data', data);
             setData(data);
         } catch (error) {
-            setError(error);
+            setMessage(error.message);
+            setSeverity('error');
+            setOpen(true);
         }
     };
 
@@ -37,9 +39,12 @@ function Customer() {
             const returnedItem = await createCustomer(item);
             setData([...data, returnedItem]);
             setMessage('Customer record created successfully.');
+            setSeverity('success');
             setOpen(true);
         } catch (error) {
-            setError(error);
+            setMessage(error.message);
+            setSeverity('error');
+            setOpen(true);
         }
     };
 
@@ -49,10 +54,13 @@ function Customer() {
         try {
             await updateCustomer(updatedItem);
             setMessage('Customer record updated successfully.');
+            setSeverity('success');
             setOpen(true);
         } catch (error) {
             setData(prevData => prevData.map(item => item.id === updatedItem.id ? item : updatedItem));
-            setError(error);
+            setMessage(error.message);
+            setSeverity('error');
+            setOpen(true);
         }
     };
 
@@ -64,9 +72,12 @@ function Customer() {
             const newData = data.filter(item => item.id !== id);
             setData(newData);
             setMessage('Customer record deleted successfully.');
+            setSeverity('success');
             setOpen(true);
         } catch (error) {
-            setError(error);
+            setMessage(error.message);
+            setSeverity('error');
+            setOpen(true);
         }
     };
 
@@ -82,11 +93,10 @@ function Customer() {
 
     return (
         <div>
-            <AlertSnackbar open={open} handleClose={handleClose} message={message} />
+            <AlertSnackbar open={open} handleClose={handleClose} message={message} severity={severity} />
             <CustomerContainer
                 name={term}
                 data={data}
-                error={error}
                 onCreate={handleCreate}
                 onUpdate={handleUpdate}
                 onDelete={handleDelete}

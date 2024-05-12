@@ -28,6 +28,7 @@ function CustomerForm({ formData, handleFormChange, formErrors, editingId, handl
                 onChange={handleFormChange}
                 error={!!formErrors.email}
                 inputProps={{ maxLength: 100 }}
+                disabled={editingId !== null}
             />
             <Button sx={{ mr: 1 }} variant="contained" type="submit">{editingId === null ? 'Create' : 'Update'}</Button>
             {editingId !== null && <Button variant="contained" color="secondary" onClick={handleCancel}>Cancel</Button>}

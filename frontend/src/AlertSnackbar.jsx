@@ -2,7 +2,7 @@ import React from 'react';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 
-function AlertSnackbar({ open, handleClose, message }) {
+function AlertSnackbar({ open, handleClose, message, severity }) {
     return (
         <Snackbar 
             open={open} 
@@ -10,7 +10,7 @@ function AlertSnackbar({ open, handleClose, message }) {
             onClose={handleClose}
             anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
         >
-            <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+            <Alert onClose={handleClose} severity={severity} sx={{ width: '100%' }}>
                 {message}
             </Alert>
         </Snackbar>
