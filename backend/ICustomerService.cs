@@ -1,5 +1,6 @@
 using BookStore.Models;
 
+// Interface for the CustomerService (CRUD operations)
 public interface ICustomerService
 {
     Task<List<Customer>> GetCustomersAsync();

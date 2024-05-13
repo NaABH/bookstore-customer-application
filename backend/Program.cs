@@ -1,6 +1,7 @@
 using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
 using BookStore.Models;
+using ApiKeyAuthentication.Authentication;
 
 const string CorsPolicyName = "MyAllowSpecificOrigins";
 const string SwaggerVersion = "v1";
@@ -12,12 +13,14 @@ var allowedOrigins = builder.Configuration.GetSection("AllowedOrigins").Get<stri
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSqlite<CustomerDb>(connectionString);
 builder.Services.AddDbContext<CustomerDb>();
+// Register the service
 builder.Services.AddScoped<ICustomerService, CustomerService>();
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc(SwaggerVersion, new OpenApiInfo { Title = "BookStore API", Description = "Enjoy Reading Your Books", Version = "v1" });
 });
 
+// Add CORS policy
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: CorsPolicyName,
@@ -39,6 +42,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseCors(CorsPolicyName);
+// Add the middleware for API key authentication
+app.UseMiddleware<ApiKeyAuthMiddleware>(builder.Configuration);
 
 // Map the routes
 app.MapGet("/customer", async (ICustomerService service) => await service.GetCustomersAsync());

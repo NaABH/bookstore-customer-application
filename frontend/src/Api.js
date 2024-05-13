@@ -1,10 +1,12 @@
 const API_URL = '/customer';
 const headers = {
     'Content-Type': 'application/json',
+    // api key for demo purposes
+    'x-api-key': 'samplekeyfortesting',
 };
 
 export const fetchCustomerData = () => {
-    return fetch(API_URL)
+    return fetch(API_URL, { headers })
         .then(response => response.json())
         .catch(error => { throw error });
 };

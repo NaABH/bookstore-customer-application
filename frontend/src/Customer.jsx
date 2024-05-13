@@ -4,10 +4,6 @@ import AlertSnackbar from './AlertSnackbar';
 import CustomerContainer from './CustomerContainer';
 
 const term = "Customer";
-const API_URL = '/customer';
-const headers = {
-    'Content-Type': 'application/json',
-};
 
 function Customer() {
     const [data, setData] = useState([]);
