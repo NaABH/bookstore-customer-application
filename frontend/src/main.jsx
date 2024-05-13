@@ -5,7 +5,7 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 const theme = createTheme();
 
-import Customer from './Customer'
+import Customer from './components/Customer'
 
 // Entry point for the app
 ReactDOM.createRoot(document.getElementById('root')).render(

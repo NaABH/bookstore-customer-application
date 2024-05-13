@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { fetchCustomerData, createCustomer, updateCustomer, deleteCustomer } from './Api';
+import { fetchCustomerData, createCustomer, updateCustomer, deleteCustomer } from '../services/Api';
 import AlertSnackbar from './AlertSnackbar';
 import CustomerContainer from './CustomerContainer';
 
