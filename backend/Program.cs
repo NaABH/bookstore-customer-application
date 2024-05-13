@@ -11,6 +11,8 @@ var allowedOrigins = builder.Configuration.GetSection("AllowedOrigins").Get<stri
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSqlite<CustomerDb>(connectionString);
+builder.Services.AddDbContext<CustomerDb>();
+builder.Services.AddScoped<ICustomerService, CustomerService>();
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc(SwaggerVersion, new OpenApiInfo { Title = "BookStore API", Description = "Enjoy Reading Your Books", Version = "v1" });
@@ -38,44 +40,37 @@ if (app.Environment.IsDevelopment())
 
 app.UseCors(CorsPolicyName);
 
-app.MapGet("/", () => "Hello World!");
-app.MapGet("/customer", async (CustomerDb db) => await db.Customers.ToListAsync());
-app.MapPost("/customer", async (CustomerDb db, Customer customer) =>
-{
-    var existingCustomer = await db.Customers
-        .Where(c => c.email == customer.email)
-        .FirstOrDefaultAsync();
+// Map the routes
+app.MapGet("/customer", async (ICustomerService service) => await service.GetCustomersAsync());
+app.MapPost("/customer", async (ICustomerService service, Customer customer) =>
+        {
+            try
+            {
+                return Results.Created($"/customer/{customer.id}", await service.CreateCustomerAsync(customer));
+            }
+            catch (InvalidOperationException e)
+            {
+                return Results.Conflict(e.Message);
+            }
+        });
 
-    if (existingCustomer != null)
+app.MapGet("/customer/{id}", async (ICustomerService service, int id) => await service.GetCustomerAsync(id));
+app.MapPut("/customer/{id}", async (ICustomerService service, Customer updateCustomer, int id) =>
+{
+    try
     {
-        return Results.Conflict("A customer with the same email already exists.");
+        return Results.Ok(await service.UpdateCustomerAsync(id, updateCustomer));
+    }
+    catch (InvalidOperationException e)
+    {
+        return Results.Conflict(e.Message);
     }
 
-    await db.Customers.AddAsync(customer);
-    await db.SaveChangesAsync();
-    return Results.Created($"/customer/{customer.id}", customer);
 });
-app.MapGet("/customer/{id}", async (CustomerDb db, int id) => await db.Customers.FindAsync(id));
-app.MapPut("/customer/{id}", async (CustomerDb db, Customer updatecustomer, int id) =>
+app.MapDelete("/customer/{id}", async (ICustomerService service, int id) =>
 {
-    var customer = await db.Customers.FindAsync(id);
-    if (customer is null) return Results.NotFound();
-    customer.firstName = updatecustomer.firstName;
-    customer.lastName = updatecustomer.lastName;
-    customer.email = updatecustomer.email;
-    await db.SaveChangesAsync();
-    return Results.NoContent();
-});
-app.MapDelete("/customer/{id}", async (CustomerDb db, int id) =>
-{
-    var customer = await db.Customers.FindAsync(id);
-    if (customer is null)
-    {
-        return Results.NotFound();
-    }
-    db.Customers.Remove(customer);
-    await db.SaveChangesAsync();
-    return Results.Ok();
+    var result = await service.DeleteCustomerAsync(id);
+    return result ? Results.Ok() : Results.NotFound();
 });
 
 app.Run();
