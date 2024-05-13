@@ -1,5 +1,4 @@
 using BookStore.Models;
-using System.Threading.Tasks;
 
 public interface ICustomerService
 {

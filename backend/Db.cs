@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace BookStore.Models; 
+namespace BookStore.Models;
 
- public record Customer
+public record Customer
 {
     public int id { get; set; }
     public string? firstName { get; set; }
@@ -10,8 +10,8 @@ namespace BookStore.Models;
     public string? email { get; set; }
 }
 
-public class CustomerDb: DbContext
+public class CustomerDb : DbContext
 {
     public CustomerDb(DbContextOptions options) : base(options) { }
-    public DbSet<Customer> Customers { get; set; } = null!;
+    public virtual DbSet<Customer> Customers { get; set; } = null!;
 }

@@ -46,10 +46,6 @@
               "target": "Package",
               "version": "[8.0.0, )"
             },
-            "Microsoft.EntityFrameworkCore.InMemory": {
-              "target": "Package",
-              "version": "[8.0.4, )"
-            },
             "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
               "version": "[8.0.0, )"
@@ -58,25 +54,9 @@
               "target": "Package",
               "version": "[17.9.0, )"
             },
-            "Moq": {
-              "target": "Package",
-              "version": "[4.20.70, )"
-            },
-            "Newtonsoft.Json": {
-              "target": "Package",
-              "version": "[13.0.1, )"
-            },
-            "NuGet.Frameworks": {
-              "target": "Package",
-              "version": "[6.5.0, )"
-            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[6.5.0, )"
-            },
-            "Xunit": {
-              "target": "Package",
-              "version": "[2.8.0, )"
+              "version": "[6.2.3, )"
             }
           },
           "imports": [

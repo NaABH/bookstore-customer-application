@@ -1,0 +1,2 @@
+BookStore.Tests.CustomerServiceTests.GetCustomersAsync_ReturnsListOfCustomers
+BookStore.Tests.CustomerServiceTests.GetCustomerByIdAsync_ReturnsCustomer
